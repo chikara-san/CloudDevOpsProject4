@@ -1,5 +1,4 @@
 [![misenli](https://circleci.com/gh/misenli/CloudDevOpsProject4.svg?style=svg)](https://app.circleci.com/pipelines/github/misenli/CloudDevOpsProject4/4/workflows/33f636fc-fdb7-4a45-bc0f-d88cda4782a6)
-
 
 ## Project Overview
 
