@@ -1,32 +1,32 @@
 [![misenli](https://circleci.com/gh/misenli/CloudDevOpsProject4.svg?style=svg)](https://app.circleci.com/pipelines/github/misenli/CloudDevOpsProject4/4/workflows/33f636fc-fdb7-4a45-bc0f-d88cda4782a6)
 
-## Project Overview
+# Cloud DevOps Engineer Nanodegree - Operationalize a Machine Learning Microservice API
 
-In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. 
+## Summary of the project
 
-You are given a pre-trained, `sklearn` model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on. You can read more about the data, which was initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-housing). This project tests your ability to operationalize a Python flask app—in a provided file, `app.py`—that serves out predictions (inference) about housing prices through API calls. This project could be extended to any pre-trained machine learning model, such as those for image recognition and data labeling.
+This is a project to provide API to predict housing prices in Boston. 
+The API uses `sklearn` inside and the pretrained model and [data](https://www.kaggle.com/c/boston-housing). 
 
-### Project Tasks
+## Project Tasks
 
-Your project goal is to operationalize this working, machine learning microservice using [kubernetes](https://kubernetes.io/), which is an open-source system for automating the management of containerized applications. In this project you will:
-* Test your project code using linting
-* Complete a Dockerfile to containerize this application
-* Deploy your containerized application using Docker and make a prediction
-* Improve the log statements in the source code for this application
-* Configure Kubernetes and create a Kubernetes cluster
-* Deploy a container using Kubernetes and make a prediction
-* Upload a complete Github repo with CircleCI to indicate that your code has been tested
-
-You can find a detailed [project rubric, here](https://review.udacity.com/#!/rubrics/2576/view).
-
-**The final implementation of the project will showcase your abilities to operationalize production microservices.**
-
----
-
-## Setup the Environment
+### Setup the Environment
 
 * Create a virtualenv and activate it
+```bash
+python3 -m venv ~/.devops
+source ~/.devops/bin/activate
+```
 * Run `make install` to install the necessary dependencies
+```bash
+make install
+```
+
+### Kubernetes Steps (Optional)
+
+* Setup and Configure Docker locally
+* Setup and Configure Kubernetes locally
+* Create Flask app in Container
+* Run via kubectl
 
 ### Running `app.py`
 
@@ -34,9 +34,30 @@ You can find a detailed [project rubric, here](https://review.udacity.com/#!/rub
 2. Run in Docker:  `./run_docker.sh`
 3. Run in Kubernetes:  `./run_kubernetes.sh`
 
-### Kubernetes Steps
+### Testing `app.py`
+The application recieve your request via port 8000 in local. 
+To test you can use make_prediction.sh in the project root directory.  
+```bash
+./make_prediction.sh
+```
 
-* Setup and Configure Docker locally
-* Setup and Configure Kubernetes locally
-* Create Flask app in Container
-* Run via kubectl
+## Files
+
+```text
+
+    .circleci/config.yml: Testing pipeline
+    Dockerfile: Docker image build definition
+    Makefile: Utility automatically build and test with lint
+    app.py: The application flask program
+    housing.csv: housing data
+    make_prediction.sh: Run the API call to generate a prediciton
+    model_data/boston_housing_prediction.joblib: Pretrained sklearn model
+    output_txt_files/docker_out.txt: Output from running docker
+    output_txt_files/kubernetes_out.txt Output from running kubernates
+    requirements.txt: The prerequisites of Python packages 
+    run_docker.sh: Run image building and boot process of the application
+    run_kubernetes.sh: Run the kubernetes deployment
+    upload_docker.sh: Upload the Docker image to my DockerHub
+
+
+```
